@@ -17,7 +17,7 @@ class NewsfeedVC: UITableViewController {
     var newsfeedPhotoCash = [Int : UIImage]()
     
     let cellSpacingHeight: CGFloat = 5
-    
+    //ывапывп
     
     override func viewDidLoad() {
         super.viewDidLoad()
