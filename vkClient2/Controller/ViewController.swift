@@ -17,7 +17,7 @@ class ViewController: UIViewController {
             webview.navigationDelegate = self
         }
     }
-        var service = VKLoginService()
+    var service = VKLoginService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         webview.load(service.getrequest())
     }
     
-   
+    
 }
 
 extension ViewController: WKNavigationDelegate {
@@ -43,7 +43,7 @@ extension ViewController: WKNavigationDelegate {
         decisionHandler(.cancel)
         
         performSegue(withIdentifier: "toLoginPage", sender: token)
-        }
+    }
     
     func getToken(fragment: String) -> String?{
         let params = fragment

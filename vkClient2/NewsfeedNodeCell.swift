@@ -57,7 +57,7 @@ class NewsfeedNodeCell: ASCellNode{
         
         //Sender Name
         
-        senderName.attributedText = NSAttributedString(string: news?.sender?.name ?? "", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16)])
+        senderName.attributedText = NSAttributedString(string: news?.sender?.name ?? "", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 17)])
         senderName.style.flexShrink = 1
         addSubnode(senderName)
         
@@ -65,10 +65,11 @@ class NewsfeedNodeCell: ASCellNode{
         
         //Post Text
         
-        postTextLabel.attributedText = NSAttributedString(string: post.text,  attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)])
+        postTextLabel.attributedText = NSAttributedString(string: post.text,  attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 15)])
         if postTextLabel.attributedText == NSAttributedString(string: ""){
             print("text is empty")
             postTextLabel.style.preferredSize = CGSize(width: UIScreen.main.bounds.width, height: 0.0)
+            postTextLabel.isHidden = true
         }
         addSubnode(postTextLabel)
         
@@ -77,17 +78,14 @@ class NewsfeedNodeCell: ASCellNode{
         //        print(post.attachments)
         if (post.attachments.count != 0) && !(post.attachments.isEmpty)  {
             
-            guard let attach = post.attachments[0] as? PhotoAttacnment else {return}
-            print("Photo width is \(attach.photo.width), height is \(attach.photo.height)")
+            if let attach = post.attachments[0] as? PhotoAttacnment{
             let module: Double = Double(attach.photo.height) / Double(attach.photo.width)
-            print("Module is \(module) ")
             let size = CGSize(width: Double(UIScreen.main.bounds.width), height: Double(UIScreen.main.bounds.width) * module)
-            print("Size is \(size)")
             postAttachedPhoto.style.preferredSize = size
             postAttachedPhoto.url = URL(string:attach.photo.photo_604)
             postAttachedPhoto.contentMode = UIViewContentMode.scaleAspectFit
-            
-            
+            print("image downloaded")
+        }
         }
         
         
@@ -107,11 +105,17 @@ class NewsfeedNodeCell: ASCellNode{
 
     }
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-        let goupImageAndName = ASStackLayoutSpec(direction: .horizontal, spacing: 20, justifyContent: .start, alignItems: .center, children: [senderImage, senderName])
+        let goupImageAndName = ASStackLayoutSpec(direction: .horizontal, spacing: 20, justifyContent: .spaceAround, alignItems: .center, children: [senderImage, senderName])
+        
         let allPost = ASStackLayoutSpec(direction: .vertical, spacing: 10, justifyContent: .start, alignItems: .start, children: [goupImageAndName, postTextLabel])
+        let firstTwo = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 10, left: 20, bottom: 0, right: 20), child: allPost)
+        
         let lcrStack = ASStackLayoutSpec(direction: .horizontal, spacing: 20, justifyContent: .end, alignItems: .end, children: [likesLabel, commentsLabel, repostsLabel])
-        let withPhoto = ASStackLayoutSpec(direction: .vertical, spacing: 10, justifyContent: .start, alignItems: .start, children: [allPost, postAttachedPhoto, lcrStack])
-        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20), child: withPhoto)
+        let lcrStackWithInsets = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20), child: lcrStack)
+        let withPhoto = ASStackLayoutSpec(direction: .vertical, spacing: 10, justifyContent: .start, alignItems: .stretch, children: [firstTwo, postAttachedPhoto, lcrStackWithInsets])
+        let withPhotoInsets =   ASInsetLayoutSpec(insets: UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0), child: withPhoto)
+
+        return withPhotoInsets
     }
     
 }

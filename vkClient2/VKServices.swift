@@ -48,7 +48,7 @@ class VKServices{
                 realm.add(friends)
                 try realm.commitWrite()
             }catch{
-                print(error)
+                print(error.localizedDescription)
             }
             
         }

@@ -30,9 +30,6 @@ class NewsfeedNodeVC: UIViewController{
         
     }
     
-//    639 522
-    
-    
     func configTable(){
      tableNode = ASTableNode()
         tableNode?.frame = UIScreen.main.bounds
