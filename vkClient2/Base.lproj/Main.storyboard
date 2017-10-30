@@ -479,9 +479,9 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3N2-BC-8LJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3889.8550724637685" y="-909.78260869565224"/>
+            <point key="canvasLocation" x="413" y="1388"/>
         </scene>
-        <!--Item-->
+        <!--News-->
         <scene sceneID="CGC-8z-rqj">
             <objects>
                 <viewController id="T4x-88-zOT" customClass="NewsfeedNodeVC" customModule="vkClient2" customModuleProvider="target" sceneMemberID="viewController">
@@ -494,11 +494,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="bhD-4j-4D4"/>
+                    <tabBarItem key="tabBarItem" title="News" id="bhD-4j-4D4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0B1-U9-kc9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2045" y="-910"/>
+            <point key="canvasLocation" x="2983" y="-943"/>
         </scene>
         <!--TBVC-->
         <scene sceneID="BmC-EB-jo0">
@@ -511,20 +511,20 @@
                     </tabBar>
                     <connections>
                         <segue destination="pyc-V0-FTK" kind="relationship" relationship="viewControllers" id="hYv-oe-kZl"/>
-                        <segue destination="5G9-4R-eGf" kind="relationship" relationship="viewControllers" id="zle-qJ-Ejj"/>
-                        <segue destination="CGD-QB-4PW" kind="relationship" relationship="viewControllers" id="gwH-pO-B2P"/>
+                        <segue destination="yXz-Ut-mbN" kind="relationship" relationship="viewControllers" id="gIk-V3-U9I"/>
                         <segue destination="T4x-88-zOT" kind="relationship" relationship="viewControllers" id="wA2-Kk-gRS"/>
+                        <segue destination="5G9-4R-eGf" kind="relationship" relationship="viewControllers" id="zle-qJ-Ejj"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E8u-eh-QVO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1282" y="114"/>
         </scene>
-        <!--First-->
+        <!--Friends-->
         <scene sceneID="8N3-CM-zPg">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pyc-V0-FTK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="First" id="kIN-iy-z2v"/>
+                    <tabBarItem key="tabBarItem" title="Friends" id="kIN-iy-z2v"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="6ve-id-1dk">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
@@ -539,11 +539,11 @@
             </objects>
             <point key="canvasLocation" x="2983" y="-214"/>
         </scene>
-        <!--Second-->
+        <!--Groups-->
         <scene sceneID="FJd-kK-xPz">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5G9-4R-eGf" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Second" id="5hg-QJ-CFT"/>
+                    <tabBarItem key="tabBarItem" title="Groups" id="5hg-QJ-CFT"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="U9q-nB-F0x">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
@@ -557,6 +557,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lAx-iE-INP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2982.608695652174" y="438.58695652173918"/>
+        </scene>
+        <!--NewFriends-->
+        <scene sceneID="cI1-cW-nDy">
+            <objects>
+                <viewController id="yXz-Ut-mbN" customClass="FriendsNodeVC" customModule="vkClient2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BTI-xc-sjx"/>
+                        <viewControllerLayoutGuide type="bottom" id="kHo-mU-VTx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HGK-dF-OqY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="NewFriends" id="g1h-Gi-NVB"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LDo-M2-ONx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2721" y="1306"/>
         </scene>
     </scenes>
 </document>

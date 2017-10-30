@@ -19,6 +19,7 @@ class Friend: Object{
     @objc  dynamic var photo_50 = ""
     @objc  dynamic var photo_100 = ""
     @objc  dynamic var photo_200_orig = ""
+    @objc  dynamic var isOnline : Int = 0
     
     convenience init(json: JSON) {
         self.init()
@@ -30,5 +31,6 @@ class Friend: Object{
         self.photo_50 = json["photo_50"].stringValue
         self.photo_100 = json["photo_100"].stringValue
         self.photo_200_orig = json["photo_200_orig"].stringValue
+        self.isOnline = json["online"].intValue
     }
 }

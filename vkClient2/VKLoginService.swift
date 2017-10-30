@@ -22,7 +22,7 @@ class VKLoginService{
             URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
             URLQueryItem(name: "scope", value: "friends, wall, photos"),
             URLQueryItem(name: "response_type", value: "token"),
-            URLQueryItem(name: "v", value: "5.69")
+            URLQueryItem(name: "v", value: "5.68")
         ]
         
         let request = URLRequest(url: urlComponents.url!)

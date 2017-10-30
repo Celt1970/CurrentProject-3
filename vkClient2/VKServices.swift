@@ -23,12 +23,13 @@ class VKServices{
     static let configuration = URLSessionConfiguration.default
     static let sessionManager = SessionManager(configuration: configuration)
     
-    func getFriends(){
+    func getFriends(completion: @escaping loadFriendsCompletion){
         
         let parameters: Parameters = [
             //            "count" : "50",
             "access_token" : "\(VKServices.token)",
             "v" : "5.68",
+            "order" : "hints",
             "fields" : "nickname, photo_100, sex, domain, photo_50"
         ]
         Alamofire.request("https://api.vk.com/method/friends.get", method: .get, parameters: parameters).responseJSON{ response in
@@ -37,19 +38,20 @@ class VKServices{
             let json = JSON(data)
             let friends = json["response"]["items"].flatMap({Friend(json: $0.1)})
             
-            do {
-                let realm = try! Realm()
-                let oldFriends = realm.objects(Friend.self)
-                
-                //                print(realm.configuration.fileURL)
-                
-                realm.beginWrite()
-                realm.delete(oldFriends)
-                realm.add(friends)
-                try realm.commitWrite()
-            }catch{
-                print(error.localizedDescription)
-            }
+//            do {
+//                let realm = try! Realm()
+//                let oldFriends = realm.objects(Friend.self)
+//
+//                //                print(realm.configuration.fileURL)
+//
+//                realm.beginWrite()
+//                realm.delete(oldFriends)
+//                realm.add(friends)
+//                try realm.commitWrite()
+//            }catch{
+//                print(error.localizedDescription)
+//            }
+            completion(friends)
             
         }
         

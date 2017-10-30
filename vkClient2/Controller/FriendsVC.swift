@@ -40,7 +40,9 @@ class FriendsVC: UITableViewController {
         refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         tableView.refreshControl = refreshControl
 //        showFriends()
-        service.getFriends()
+        service.getFriends(completion: { friends in
+            
+        })
         pairTableAndRealm()
         
         print(FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first)
@@ -52,7 +54,9 @@ class FriendsVC: UITableViewController {
     }
     
     @objc func refreshData(){
-        service.getFriends()
+        service.getFriends(completion: { friends in
+            
+        })
         pairTableAndRealm()
         refreshControl?.endRefreshing()
     }
@@ -88,6 +92,7 @@ class FriendsVC: UITableViewController {
         getCasheImage.completionBlock = {
             OperationQueue.main.addOperation {
                 cell.friendImage.image = getCasheImage.outputImage
+                cell.friendImage.layer.cornerRadius = cell.friendImage.frame.width / 2
             }
         }
         queue.addOperation(getCasheImage)
