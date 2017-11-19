@@ -37,6 +37,21 @@ class FriendsNodeVC: UIViewController{
         view.addSubnode(tableNode!)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toImages"{
+            if let controller = segue.destination as? FriendsPhotosNodeVC{
+                let indexPath = tableNode?.indexPathForSelectedRow
+                controller.friendID = friends?[(indexPath?.row)!].id ?? 0
+                
+            }
+        }
+        
+    }
+    
+    func tableNode(_ tableNode: ASTableNode, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "toImages", sender: self)
+    }
+    
 }
 
 extension FriendsNodeVC: ASTableDelegate, ASTableDataSource{

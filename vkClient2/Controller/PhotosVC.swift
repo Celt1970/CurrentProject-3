@@ -17,12 +17,11 @@ class PhotosVC: UICollectionViewController {
     let service = VKServices()
     var friendID: Int = 0
     var photos = [Photo]()
-    var photoToSend: Photo?
+    var indexToSend: Int = 0
     var photoCash = [Int : UIImage]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(friendID)
         
         service.getPhotos(ownerID: friendID){[weak self] photos in
             self?.photos = photos
@@ -83,13 +82,15 @@ class PhotosVC: UICollectionViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toPreview"{
             if let controller = segue.destination as? PreviewVC{
-                controller.photo = photoToSend
+                controller.photos = photos
+                controller.index = indexToSend
+                print("Передаю индекс и фото \(photos.count) \(indexToSend ?? 0)")
             }
         }
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        photoToSend = photos[indexPath.row]
+        indexToSend = indexPath.row
         performSegue(withIdentifier: "toPreview", sender: self)
         
     }

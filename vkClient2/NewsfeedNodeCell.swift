@@ -67,7 +67,6 @@ class NewsfeedNodeCell: ASCellNode{
         
         postTextLabel.attributedText = NSAttributedString(string: post.text,  attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 15)])
         if postTextLabel.attributedText == NSAttributedString(string: ""){
-            print("text is empty")
             postTextLabel.style.preferredSize = CGSize(width: UIScreen.main.bounds.width, height: 0.0)
             postTextLabel.isHidden = true
         }
@@ -84,7 +83,6 @@ class NewsfeedNodeCell: ASCellNode{
             postAttachedPhoto.style.preferredSize = size
             postAttachedPhoto.url = URL(string:attach.photo.photo_604)
             postAttachedPhoto.contentMode = UIViewContentMode.scaleAspectFit
-            print("image downloaded")
         }
         }
         

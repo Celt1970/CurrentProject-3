@@ -106,7 +106,6 @@ class FriendsVC: UITableViewController {
             if let controller = segue.destination as? PhotosVC{
                 let indexPath = tableView.indexPathForSelectedRow
                 controller.friendID = friends?[(indexPath?.row)!].id ?? 0
-                print( controller.friendID)
 
             }
         }

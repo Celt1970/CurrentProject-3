@@ -65,7 +65,7 @@ class VKServices{
             "count" : "200",
             "no_service_albums" : "0",
             "access_token" : "\(VKServices.token)",
-            "v" : "5.68"
+            "v" : "5.69"
         ]
         
         VKServices.sessionManager.request("https://api.vk.com/method/photos.getAll", parameters: parameters).responseJSON(queue: .global(qos: .userInteractive)) { response in

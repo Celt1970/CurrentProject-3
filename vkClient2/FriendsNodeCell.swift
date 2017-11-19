@@ -35,7 +35,7 @@ class FriendsNodeCell: ASCellNode{
         friendsImage.style.preferredSize = CGSize(width: 50, height: 50)
         friendsImage.url = URL(string: (friend?.photo_100)!)
         
-        let width = 50 * UIScreen.main.scale
+        let width:CGFloat = 50 * 2.0
         
         friendsImage.imageModificationBlock = { image in
             let rect = CGRect(x: 0, y: 0, width: width, height: width)

@@ -21,6 +21,8 @@
 		AA50D56A1F6C7261001678A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA50D5681F6C7261001678A7 /* Main.storyboard */; };
 		AA50D56C1F6C7261001678A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA50D56B1F6C7261001678A7 /* Assets.xcassets */; };
 		AA50D56F1F6C7261001678A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA50D56D1F6C7261001678A7 /* LaunchScreen.storyboard */; };
+		AA80A3221FC0CB1300BB907E /* FriendsPhotosNodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA80A3211FC0CB1300BB907E /* FriendsPhotosNodeVC.swift */; };
+		AA80A3241FC0CB7C00BB907E /* FriendsPhotosNodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA80A3231FC0CB7C00BB907E /* FriendsPhotosNodeCell.swift */; };
 		AA8E58401FA2848500CA577F /* GetCashImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8E583F1FA2848500CA577F /* GetCashImage.swift */; };
 		AA8E69101F750F4C000E278F /* FriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8E690F1F750F4C000E278F /* FriendsVC.swift */; };
 		AA8E69121F750F7A000E278F /* FriendsVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8E69111F750F7A000E278F /* FriendsVCCell.swift */; };
@@ -66,6 +68,8 @@
 		AA50D56B1F6C7261001678A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA50D56E1F6C7261001678A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA50D5701F6C7261001678A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA80A3211FC0CB1300BB907E /* FriendsPhotosNodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsPhotosNodeVC.swift; sourceTree = "<group>"; };
+		AA80A3231FC0CB7C00BB907E /* FriendsPhotosNodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsPhotosNodeCell.swift; sourceTree = "<group>"; };
 		AA8E583F1FA2848500CA577F /* GetCashImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCashImage.swift; sourceTree = "<group>"; };
 		AA8E690F1F750F4C000E278F /* FriendsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsVC.swift; sourceTree = "<group>"; };
 		AA8E69111F750F7A000E278F /* FriendsVCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsVCCell.swift; sourceTree = "<group>"; };
@@ -136,6 +140,7 @@
 				AAA8F0AF1F99FCBF006200B7 /* NewsfeedVC.swift */,
 				AAB0C7791FA74AEA00F494A0 /* NewsfeedNodeVC.swift */,
 				AABB19CC1FA7E4E80022E036 /* FriendsNodeVC.swift */,
+				AA80A3211FC0CB1300BB907E /* FriendsPhotosNodeVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -163,6 +168,7 @@
 				AAB0C7771FA746F900F494A0 /* NewsfeedNodeCell.swift */,
 				AAB0C77B1FA7B7C400F494A0 /* NewsfeedWallPhotoNodeCell.swift */,
 				AABB19CA1FA7DEAD0022E036 /* FriendsNodeCell.swift */,
+				AA80A3231FC0CB7C00BB907E /* FriendsPhotosNodeCell.swift */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -411,6 +417,7 @@
 				AA8E691C1F752B5E000E278F /* PhotosCell.swift in Sources */,
 				AA50D5671F6C7261001678A7 /* ViewController.swift in Sources */,
 				AA5066BB1F995EAF00E5319A /* NewsfeedService.swift in Sources */,
+				AA80A3241FC0CB7C00BB907E /* FriendsPhotosNodeCell.swift in Sources */,
 				AA5066B71F99573200E5319A /* CommentsLikesReposts.swift in Sources */,
 				AA8E69121F750F7A000E278F /* FriendsVCCell.swift in Sources */,
 				AA5066B91F995B4F00E5319A /* NewsfeedWallPhoto.swift in Sources */,
@@ -441,6 +448,7 @@
 				AAC3935E1F7919BB00064981 /* VKLoginService.swift in Sources */,
 				AA5066BF1F99658F00E5319A /* NewsSender.swift in Sources */,
 				AAB0C77A1FA74AEA00F494A0 /* NewsfeedNodeVC.swift in Sources */,
+				AA80A3221FC0CB1300BB907E /* FriendsPhotosNodeVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
