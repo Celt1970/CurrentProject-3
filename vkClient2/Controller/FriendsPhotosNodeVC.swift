@@ -57,7 +57,7 @@ class FriendsPhotosNodeVC: UIViewController, ASCollectionDelegate, ASCollectionD
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toPreview"{
-            if let controller = segue.destination as? PreviewVC{
+            if let controller = segue.destination as? PreviewNodeVC{
                 controller.photos = photos
                 controller.index = indexToSend
             }
@@ -73,6 +73,8 @@ class FriendsPhotosNodeVC: UIViewController, ASCollectionDelegate, ASCollectionD
     func collectionNode(_ collectionNode: ASCollectionNode, numberOfItemsInSection section: Int) -> Int {
         return photos.count
     }
+    
+    
     
     func collectionNode(_ collectionNode: ASCollectionNode, nodeBlockForItemAt indexPath: IndexPath) -> ASCellNodeBlock {
         

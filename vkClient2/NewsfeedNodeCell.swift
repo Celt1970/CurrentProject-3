@@ -17,6 +17,7 @@ class NewsfeedNodeCell: ASCellNode{
     lazy var likesLabel = ASTextNode()
     lazy var repostsLabel = ASTextNode()
     lazy var commentsLabel = ASTextNode()
+    lazy var topSeparator = ASImageNode()
     
     var news: NewsfeedItem?
     
@@ -99,6 +100,9 @@ class NewsfeedNodeCell: ASCellNode{
         addSubnode(commentsLabel)
         addSubnode(repostsLabel)
 
+        topSeparator.backgroundColor = UIColor.lightGray
+        topSeparator.style.preferredSize = CGSize(width: UIScreen.main.bounds.width , height: 1.0)
+        addSubnode(topSeparator)
         
 
     }
@@ -107,10 +111,11 @@ class NewsfeedNodeCell: ASCellNode{
         
         let allPost = ASStackLayoutSpec(direction: .vertical, spacing: 10, justifyContent: .start, alignItems: .start, children: [goupImageAndName, postTextLabel])
         let firstTwo = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 10, left: 20, bottom: 0, right: 20), child: allPost)
-        
+        topSeparator.style.flexGrow = 1
         let lcrStack = ASStackLayoutSpec(direction: .horizontal, spacing: 20, justifyContent: .end, alignItems: .end, children: [likesLabel, commentsLabel, repostsLabel])
         let lcrStackWithInsets = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20), child: lcrStack)
-        let withPhoto = ASStackLayoutSpec(direction: .vertical, spacing: 10, justifyContent: .start, alignItems: .stretch, children: [firstTwo, postAttachedPhoto, lcrStackWithInsets])
+        let lcrVerticalStack = ASStackLayoutSpec(direction: .vertical, spacing: 10, justifyContent: .center, alignItems: .end, children: [topSeparator, lcrStackWithInsets])
+        let withPhoto = ASStackLayoutSpec(direction: .vertical, spacing: 10, justifyContent: .start, alignItems: .stretch, children: [firstTwo, postAttachedPhoto, lcrVerticalStack])
         let withPhotoInsets =   ASInsetLayoutSpec(insets: UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0), child: withPhoto)
 
         return withPhotoInsets

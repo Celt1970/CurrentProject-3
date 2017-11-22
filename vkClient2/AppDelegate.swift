@@ -14,11 +14,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
 
     var window: UIWindow?
-    
+   
     
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+//        UIApplication.shared.statusBarStyle = .lightContent
+//        UINavigationBar.appearance().clipsToBounds = true
+//        let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
+//        statusBar.backgroundColor = UIColor.init(red: 10, green: 100, blue: 140, alpha: 1.0)
+        UINavigationBar.appearance().barTintColor = UIColor(red: 80/255, green: 114/255.0, blue: 153/255.0, alpha: 1)
+        UINavigationBar.appearance().tintColor = .white
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        UINavigationBar.appearance().isTranslucent = false
+        UIApplication.shared.statusBarStyle = .lightContent
+
         return true
     }
 
