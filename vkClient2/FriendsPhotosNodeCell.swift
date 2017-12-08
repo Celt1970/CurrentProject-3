@@ -11,9 +11,9 @@ import AsyncDisplayKit
 
 class FriendsPhotosNodeCell: ASCellNode{
     lazy var picture = ASNetworkImageNode()
-    var image: String
+    var image: Photo
     
-    init (image: String){
+    init (image: Photo){
         self.image = image
         super.init()
         configCell()
@@ -26,15 +26,16 @@ class FriendsPhotosNodeCell: ASCellNode{
     
     func configCell(){
     
-        picture.url = URL(string: image)
-        picture.style.preferredSize = CGSize(width: 100, height: 100)
+        picture.url = URL(string: image.photo_604)
+        picture.style.preferredSize = CGSize(width: image.width, height: image.height)
         
         addSubnode(picture)
         
     }
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1), child: picture)
+    
+        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 1, left: 0, bottom: 1, right: 0), child: picture)
     }
     
 }

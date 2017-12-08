@@ -52,6 +52,7 @@
 		AAC393601F792F9800064981 /* TBVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC3935F1F792F9800064981 /* TBVC.swift */; };
 		AAC3B6121F7594BB0040960F /* PreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC3B6111F7594BB0040960F /* PreviewVC.swift */; };
 		AAC3B6141F7629220040960F /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC3B6131F7629220040960F /* Group.swift */; };
+		AAF0B6271FD35F1400626326 /* SizingPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF0B6261FD35F1400626326 /* SizingPhotos.swift */; };
 		AAFC6D9B1FC624DB00D91707 /* FriendPageNodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFC6D9A1FC624DB00D91707 /* FriendPageNodeCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +105,7 @@
 		AAC3935F1F792F9800064981 /* TBVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBVC.swift; sourceTree = "<group>"; };
 		AAC3B6111F7594BB0040960F /* PreviewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewVC.swift; sourceTree = "<group>"; };
 		AAC3B6131F7629220040960F /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		AAF0B6261FD35F1400626326 /* SizingPhotos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizingPhotos.swift; sourceTree = "<group>"; };
 		AAFC6D9A1FC624DB00D91707 /* FriendPageNodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPageNodeCell.swift; sourceTree = "<group>"; };
 		B4BD59C255E0115919B4D9F5 /* Pods-vkClient2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vkClient2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-vkClient2/Pods-vkClient2.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -151,6 +153,7 @@
 				AAB0C7791FA74AEA00F494A0 /* NewsfeedNodeVC.swift */,
 				AABB19CC1FA7E4E80022E036 /* FriendsNodeVC.swift */,
 				AA80A3211FC0CB1300BB907E /* FriendsPhotosNodeVC.swift */,
+				AAF0B6261FD35F1400626326 /* SizingPhotos.swift */,
 				AA1901E11FC2E3CD00D42964 /* PreviewNodeVC.swift */,
 				AAA091201FC453890096B019 /* NewPostVC.swift */,
 			);
@@ -464,6 +467,7 @@
 				AA26441F1F861D9B009816C6 /* VKServices.swift in Sources */,
 				AABB19CD1FA7E4E80022E036 /* FriendsNodeVC.swift in Sources */,
 				AAC3B6121F7594BB0040960F /* PreviewVC.swift in Sources */,
+				AAF0B6271FD35F1400626326 /* SizingPhotos.swift in Sources */,
 				AAC3935E1F7919BB00064981 /* VKLoginService.swift in Sources */,
 				AA5066BF1F99658F00E5319A /* NewsSender.swift in Sources */,
 				AAA091231FC45A340096B019 /* NewsfeedHeaderNode.swift in Sources */,

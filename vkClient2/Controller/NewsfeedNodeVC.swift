@@ -11,6 +11,7 @@ import AsyncDisplayKit
 
 class NewsfeedNodeVC: UIViewController{
     var tableNode: ASTableNode?
+
     
     let vkService = VKServices()
     let newsfeedService = NewsfeedService()
@@ -29,15 +30,23 @@ class NewsfeedNodeVC: UIViewController{
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.default
     }
     
+    @objc func reload(){
+        newsfeedService.getNewsfeed(completion: { [weak self] news in
+            self?.news = news
+            self?.tableNode?.reloadData()
+            
+        })
+        tableNode?.reloadData()
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         let someVar = ({ [weak self] () in
             self?.performSegue(withIdentifier: "toNewPost", sender: self)
         })
-        
-        
-        
         
         newsfeedService.getNewsfeed(completion: { [weak self] news in
             self?.news = news
@@ -67,6 +76,9 @@ class NewsfeedNodeVC: UIViewController{
     
     
     @IBAction func unwindToNewsfeed(segue:UIStoryboardSegue) { }
+    @IBAction func refreshWhole(_ sender: Any) {
+        reload()
+    }
     
 }
 

@@ -24,7 +24,7 @@ class NewsfeedService{
         
         let queue = DispatchQueue.global(qos: .userInteractive)
         
-        Alamofire.request("https://api.vk.com/method/newsfeed.get", method: .get, parameters: parameters).responseJSON(queue: .main) { response in
+        Alamofire.request("https://api.vk.com/method/newsfeed.get", method: .get, parameters: parameters).responseJSON(queue: queue) { response in
             guard let data = response.value else {return}
             
             let json = JSON(data)
@@ -48,6 +48,32 @@ class NewsfeedService{
             
         }
     }
+    
+    func newPpost(post: NewPost){
+        var parameters: Parameters = [
+            "access_token" : "\(VKServices.token)",
+            "v" : "5.68",
+            "message": "\(post.message!)"
+            
+        ]
+        if post.lat != nil && post.long != nil{
+            parameters["lat"] = post.lat
+            parameters["long"] = post.long
+        }
+        
+        let queue = DispatchQueue.global(qos: .userInteractive)
+        
+        Alamofire.request("https://api.vk.com/method/wall.post", method: .get, parameters: parameters).responseJSON(queue: queue) { response in
+            print(response)
+        }
+        
+    }
+}
+
+struct NewPost{
+    var message: String?
+    var lat: Double?
+    var long: Double?
     
 }
 

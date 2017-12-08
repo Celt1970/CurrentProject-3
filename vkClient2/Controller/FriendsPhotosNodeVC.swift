@@ -19,14 +19,17 @@ class FriendsPhotosNodeVC: UIViewController, ASCollectionDelegate, ASCollectionD
     let service = VKServices()
     var friendID: Int = 0
     var photos = [Photo]()
+    var transformedPhotos = [Photo]()
     var indexToSend: Int = 0
     var photoCash = [Int : UIImage]()
+    var frameScale = 20
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         service.getPhotos(ownerID: friendID){[weak self] photos in
             self?.photos = photos
+            self?.transformedPhotos = self?.transformArray(array: photos) ?? [Photo]()
             self?.collectionNode?.reloadData()
         }
         initUI()
@@ -36,7 +39,7 @@ class FriendsPhotosNodeVC: UIViewController, ASCollectionDelegate, ASCollectionD
     func initUI(){
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
-        flowLayout.itemSize = CGSize(width: UIScreen.main.bounds.width / 3 - 1, height: UIScreen.main.bounds.width / 3 - 1)
+//        flowLayout.itemSize = CGSize(width: UIScreen.main.bounds.width / 3 - 1, height: UIScreen.main.bounds.width / 3 - 1)
         flowLayout.minimumInteritemSpacing = 0.5
         flowLayout.minimumLineSpacing = 0.5
         
@@ -78,7 +81,7 @@ class FriendsPhotosNodeVC: UIViewController, ASCollectionDelegate, ASCollectionD
     
     func collectionNode(_ collectionNode: ASCollectionNode, nodeBlockForItemAt indexPath: IndexPath) -> ASCellNodeBlock {
         
-        let cell = FriendsPhotosNodeCell(image: photos[indexPath.row].photo_604)
+        let cell = FriendsPhotosNodeCell(image: transformedPhotos[indexPath.row])
         return {
             return cell
         }

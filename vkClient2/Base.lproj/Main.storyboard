@@ -269,15 +269,21 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Tu-xh-Snd">
                                         <rect key="frame" x="326" y="0.0" width="48" height="30"/>
                                         <state key="normal" title="Готово"/>
+                                        <connections>
+                                            <action selector="sendPostPressed:" destination="NiL-fy-zN0" eventType="touchUpInside" id="D6A-w0-26R"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="e52-FZ-WHA"/>
                                 </constraints>
                             </stackView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" keyboardDismissMode="onDrag" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rC4-BO-MNc">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rC4-BO-MNc">
                                 <rect key="frame" x="10" y="76" width="394" height="36.333333333333343"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36.329999999999998" id="im6-Az-iQj"/>
+                                </constraints>
                                 <color key="textColor" red="0.32252901792526245" green="0.58926302194595337" blue="0.8353239893913269" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
@@ -299,6 +305,7 @@
                     </view>
                     <connections>
                         <outlet property="textView" destination="rC4-BO-MNc" id="3xE-OG-p7d"/>
+                        <outlet property="textViewHeight" destination="im6-Az-iQj" id="NEK-I5-5x8"/>
                         <outlet property="toolbarView" destination="pSQ-yW-LLg" id="d0B-Si-OeC"/>
                         <segue destination="RnG-YX-b4e" kind="unwind" identifier="backToNewsfeed" unwindAction="unwindToNewsfeedWithSegue:" id="UuJ-me-tU8"/>
                     </connections>
@@ -314,6 +321,9 @@
                                 <constraint firstAttribute="width" constant="30" id="BcW-dl-Rwj"/>
                             </constraints>
                             <state key="normal" backgroundImage="geoTagIcon"/>
+                            <connections>
+                                <action selector="getLocationPressed:" destination="NiL-fy-zN0" eventType="touchUpInside" id="hTc-Ij-rtw"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yrz-AP-PWS">
                             <rect key="frame" x="48" y="10" width="46" height="23"/>
@@ -335,7 +345,7 @@
                 </view>
                 <exit id="RnG-YX-b4e" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="6378.2608695652179" y="667.66304347826087"/>
+            <point key="canvasLocation" x="5067" y="659"/>
         </scene>
         <!--Новости-->
         <scene sceneID="CGC-8z-rqj">
@@ -353,14 +363,21 @@
                             <navigationItem title="Title" id="fAV-6f-iyq"/>
                         </items>
                     </navigationBar>
-                    <navigationItem key="navigationItem" title="Новости" id="jgd-De-5dz"/>
+                    <navigationItem key="navigationItem" title="Новости" id="jgd-De-5dz">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="Y83-jF-bfO">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="refreshWhole:" destination="T4x-88-zOT" id="ALp-o6-X0j"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="NiL-fy-zN0" kind="presentation" identifier="toNewPost" id="vpm-qX-vDX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0B1-U9-kc9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5426.0869565217399" y="667.66304347826087"/>
+            <point key="canvasLocation" x="4283" y="659"/>
         </scene>
         <!--TBVC-->
         <scene sceneID="BmC-EB-jo0">
@@ -483,7 +500,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RA5-Cm-F9M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4652" y="667"/>
+            <point key="canvasLocation" x="3428" y="659"/>
         </scene>
     </scenes>
     <resources>
