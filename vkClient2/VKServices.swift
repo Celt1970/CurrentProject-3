@@ -17,6 +17,7 @@ class VKServices{
     typealias loadGroupsDCompletion = ([Group]) -> Void
     typealias loadPhotosCompletion = ([Photo]) -> Void
     typealias loadSinglePhotoCompletion = (UIImage) -> Void
+    typealias loadFriendsRequestsCompletion = ([Int]) -> Void
     
     
     static var token = ""
@@ -62,7 +63,7 @@ class VKServices{
         let parameters: Parameters = [
             "owner_id": "\(ownerID)",
             "extended" : "0",
-            "count" : "200",
+            "count" : "199",
             "no_service_albums" : "0",
             "access_token" : "\(VKServices.token)",
             "v" : "5.69"
@@ -72,7 +73,7 @@ class VKServices{
             guard let data = response.value else {return}
             
             let json = JSON(data)
-            let photos = json ["response"]["items"].flatMap({Photo(json: $0.1)})
+            let photos = json ["response"]["items"].flatMap({Photo(json: $0.1)}).filter({$0.width != 0 || $0.height != 0 })
             
             //            do {
             //                let realm = try! Realm()
@@ -178,6 +179,26 @@ class VKServices{
                     }
                 }
             }
+        }
+    }
+    
+    func loadFriendRequests(completion: @escaping loadFriendsRequestsCompletion){
+        let parameters: Parameters = [
+            "extended" : "1",
+            "out" : "0",
+            "v" : "5.68",
+            "access_token" : "\(VKServices.token)"
+        ]
+        
+        Alamofire.request("https://api.vk.com/method/friends.getRequests", method: .get, parameters: parameters).responseJSON{ response in
+            guard let data = response.value else { return }
+            
+            let json = JSON(data)
+            let users = json["response"]["items"].flatMap({
+                $0.1["user_id"].intValue
+            })
+            completion(users)
+            
         }
     }
     

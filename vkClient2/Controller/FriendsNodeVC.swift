@@ -16,6 +16,7 @@ class FriendsNodeVC: UIViewController{
     let vkService = VKServices()
     
     var friends: [Friend]?
+    var requests = [Int]()
     
     
     override func viewDidLoad() {
@@ -24,7 +25,12 @@ class FriendsNodeVC: UIViewController{
         vkService.getFriends(completion: {[weak self] friends in
             self?.friends = friends
             self?.tableNode?.reloadData()
+            print(self?.requests)
         })
+        vkService.loadFriendRequests(completion: { [weak self] requests in
+            self?.requests = requests
+        })
+        
         configTable()
     }
     

@@ -67,7 +67,7 @@ extension FriendsPhotosNodeVC{
         
         
         let scaledArray = grouppedArray.map({
-            scaleLineToHeight(images: $0, height: Double(UIScreen.main.bounds.height / 10))
+            scaleLineToHeight(images: $0, height: Double(UIScreen.main.bounds.height / 9))
         })
         scaledArray.map({
             decideWhoPayMore(currentLine: $0)

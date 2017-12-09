@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		27F51752E76923767B962876 /* Pods_vkClient2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6CF7F00DC79B16B44782942 /* Pods_vkClient2.framework */; };
+		AA00FD221FDC7F6D0009E092 /* NewsfeedRepostItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00FD211FDC7F6D0009E092 /* NewsfeedRepostItem.swift */; };
+		AA00FD241FDC80F40009E092 /* NewsfeedRepostNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00FD231FDC80F40009E092 /* NewsfeedRepostNode.swift */; };
 		AA1901E21FC2E3CD00D42964 /* PreviewNodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1901E11FC2E3CD00D42964 /* PreviewNodeVC.swift */; };
 		AA1901E41FC2E68C00D42964 /* PreviewPageNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1901E31FC2E68C00D42964 /* PreviewPageNode.swift */; };
 		AA1FFCD51F862283008876AB /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1FFCD41F862283008876AB /* Photo.swift */; };
@@ -59,6 +61,8 @@
 /* Begin PBXFileReference section */
 		869C0F8ACA399BF8C8C8AFF0 /* Pods-vkClient2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vkClient2.release.xcconfig"; path = "Pods/Target Support Files/Pods-vkClient2/Pods-vkClient2.release.xcconfig"; sourceTree = "<group>"; };
 		A6CF7F00DC79B16B44782942 /* Pods_vkClient2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vkClient2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA00FD211FDC7F6D0009E092 /* NewsfeedRepostItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedRepostItem.swift; sourceTree = "<group>"; };
+		AA00FD231FDC80F40009E092 /* NewsfeedRepostNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedRepostNode.swift; sourceTree = "<group>"; };
 		AA1901E11FC2E3CD00D42964 /* PreviewNodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewNodeVC.swift; sourceTree = "<group>"; };
 		AA1901E31FC2E68C00D42964 /* PreviewPageNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewPageNode.swift; sourceTree = "<group>"; };
 		AA1FFCD41F862283008876AB /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
@@ -183,6 +187,7 @@
 				AAFC6D9A1FC624DB00D91707 /* FriendPageNodeCell.swift */,
 				AAA8F0AD1F99FC0C006200B7 /* NewsfeedPostCell.swift */,
 				AAB0C7771FA746F900F494A0 /* NewsfeedNodeCell.swift */,
+				AA00FD231FDC80F40009E092 /* NewsfeedRepostNode.swift */,
 				AAB0C77B1FA7B7C400F494A0 /* NewsfeedWallPhotoNodeCell.swift */,
 				AABB19CA1FA7DEAD0022E036 /* FriendsNodeCell.swift */,
 				AA80A3231FC0CB7C00BB907E /* FriendsPhotosNodeCell.swift */,
@@ -215,6 +220,7 @@
 			children = (
 				AAA8F0A81F99EF70006200B7 /* Attachments */,
 				AA5066B21F9954AC00E5319A /* NewsfeedItem.swift */,
+				AA00FD211FDC7F6D0009E092 /* NewsfeedRepostItem.swift */,
 				AA5066B41F99565800E5319A /* NewsfeedPost.swift */,
 				AA5066B81F995B4F00E5319A /* NewsfeedWallPhoto.swift */,
 				AA5066B61F99573200E5319A /* CommentsLikesReposts.swift */,
@@ -321,6 +327,11 @@
 						DevelopmentTeam = TXYT8RH44K;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -450,6 +461,8 @@
 				AAB0C77C1FA7B7C400F494A0 /* NewsfeedWallPhotoNodeCell.swift in Sources */,
 				AAA8F0AE1F99FC0C006200B7 /* NewsfeedPostCell.swift in Sources */,
 				AA8E69141F751019000E278F /* Friend.swift in Sources */,
+				AA00FD221FDC7F6D0009E092 /* NewsfeedRepostItem.swift in Sources */,
+				AA00FD241FDC80F40009E092 /* NewsfeedRepostNode.swift in Sources */,
 				AAC3B6141F7629220040960F /* Group.swift in Sources */,
 				AA8E69231F753321000E278F /* NewGroupsVC.swift in Sources */,
 				AAFC6D9B1FC624DB00D91707 /* FriendPageNodeCell.swift in Sources */,

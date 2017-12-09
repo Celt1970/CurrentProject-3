@@ -80,7 +80,6 @@ class FriendsPhotosNodeVC: UIViewController, ASCollectionDelegate, ASCollectionD
     
     
     func collectionNode(_ collectionNode: ASCollectionNode, nodeBlockForItemAt indexPath: IndexPath) -> ASCellNodeBlock {
-        
         let cell = FriendsPhotosNodeCell(image: transformedPhotos[indexPath.row])
         return {
             return cell

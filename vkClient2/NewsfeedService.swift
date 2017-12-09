@@ -30,12 +30,24 @@ class NewsfeedService{
             let json = JSON(data)
             let items = json["response"]["items"].flatMap({NewsfeedItem.chooseNewsType(json: $0.1)})
             let senders = json["response"]["profiles"].flatMap({NewsfeedProfile(json: $0.1)}) + json["response"]["groups"].flatMap({NewsfeedGroup(json: $0.1)})
-            let news = items.flatMap({ item -> NewsfeedItem in
+            let news = items.flatMap({ (item: NewsfeedItem) -> NewsfeedItem in
                 
                 for sender in senders{
                     if sender.id.magnitude == item.sourceID.magnitude{
                         item.sender = sender
                     }
+                    if let post = item as? NewsfeedPost{
+                        if (post.repost.count != 0) && !(post.repost.isEmpty){
+                            if post.repost[0]?.ownerId.magnitude == sender.id.magnitude{
+                                post.repost[0]?.sender = sender
+                                print(post.repost[0]?.sender?.name ?? "no sender name")
+                            }
+                        }
+                    }
+                    
+                }
+                if let post = item as? NewsfeedPost{
+                    print(post.repost.count)
                 }
                 return item
                 

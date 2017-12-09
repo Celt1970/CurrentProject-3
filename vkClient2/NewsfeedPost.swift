@@ -18,7 +18,7 @@ class NewsfeedPost: NewsfeedItem{
     var likes: Likes
     var reposts: Reposts
     let attachments: [NewsfeedAttachment?]
-    
+    var repost: [NewsfeedRepostItem?]
     override init(json: JSON) {
         self.postType = json["post_type"].stringValue
         self.text = json ["text"].stringValue
@@ -27,6 +27,7 @@ class NewsfeedPost: NewsfeedItem{
         self.likes = Likes(json: json["likes"])
         self.reposts = Reposts(json: json["reposts"])
         self.attachments = json["attachments"].map({NewsfeedAttachment.chooseTyoeOfAttachment(json: $0.1)})
+        self.repost = json["copy_history"].map({NewsfeedRepostItem(json: $0.1)})
         super.init(json: json)
     }
     
