@@ -40,14 +40,12 @@ class NewsfeedService{
                         if (post.repost.count != 0) && !(post.repost.isEmpty){
                             if post.repost[0]?.ownerId.magnitude == sender.id.magnitude{
                                 post.repost[0]?.sender = sender
-                                print(post.repost[0]?.sender?.name ?? "no sender name")
                             }
                         }
                     }
                     
                 }
                 if let post = item as? NewsfeedPost{
-                    print(post.repost.count)
                 }
                 return item
                 

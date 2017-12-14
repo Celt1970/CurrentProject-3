@@ -19,6 +19,7 @@ class NewsfeedNodeCell: ASCellNode{
     lazy var commentsLabel = ASTextNode()
     lazy var topSeparator = ASImageNode()
     lazy var repost = ASDisplayNode()
+    lazy var date = ASTextNode()
     
     var news: NewsfeedItem?
     
@@ -57,11 +58,28 @@ class NewsfeedNodeCell: ASCellNode{
         
         addSubnode(senderImage)
         
-        //Sender Name
+        //Sender Name and Date
         
-        senderName.attributedText = NSAttributedString(string: news?.sender?.name ?? "", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 17)])
-        senderName.style.flexShrink = 1
+        senderName.attributedText = NSAttributedString(string: news?.sender?.name ?? "", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 17),
+                                                                                                      NSAttributedStringKey.foregroundColor: UIColor(red: 34/255, green: 75/255, blue: 122/255, alpha: 1.0)])
+
+        senderName.truncationMode = .byTruncatingTail
+        senderName.style.preferredSize = CGSize(width: UIScreen.main.bounds.width / 3 * 2, height: 20)
+        senderName.truncationAttributedText = NSAttributedString(string: "¶¶¶")
         addSubnode(senderName)
+        
+        let convertedDate = NSDate(timeIntervalSince1970: Double((news?.date)!))
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+
+        dateFormatter.timeStyle = DateFormatter.Style.short
+        dateFormatter.dateStyle = DateFormatter.Style.medium
+        dateFormatter.timeZone = TimeZone.current
+        let localDate = dateFormatter.string(from: convertedDate as Date)
+        date.attributedText = NSAttributedString(string: "\(localDate)", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12),
+                                                                                          NSAttributedStringKey.foregroundColor: UIColor(red: 145/255, green: 145/255, blue: 145/255, alpha: 1.0)])
+        addSubnode(date)
+        
         
         let post = news as! NewsfeedPost
         
@@ -119,7 +137,8 @@ class NewsfeedNodeCell: ASCellNode{
     
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-        let goupImageAndName = ASStackLayoutSpec(direction: .horizontal, spacing: 20, justifyContent: .spaceAround, alignItems: .center, children: [senderImage, senderName])
+        let nameAndDate = ASStackLayoutSpec(direction: .vertical, spacing: 5, justifyContent: .start, alignItems: .start, children: [senderName, date])
+        let goupImageAndName = ASStackLayoutSpec(direction: .horizontal, spacing: 10, justifyContent: .spaceAround, alignItems: .center, children: [senderImage, nameAndDate])
         
         let allPost = ASStackLayoutSpec(direction: .vertical, spacing: 10, justifyContent: .start, alignItems: .start, children: [goupImageAndName, postTextLabel])
         let firstTwo = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 11, left: 20, bottom: 0, right: 20), child: allPost)

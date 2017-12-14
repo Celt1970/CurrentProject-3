@@ -9,13 +9,15 @@
 import UIKit
 import AsyncDisplayKit
 
+let mainColor = UIColor(red: 80/255, green: 114/255.0, blue: 153/255.0, alpha: 1)
+
+
 class NewsfeedNodeVC: UIViewController{
     var tableNode: ASTableNode?
 
     
     let vkService = VKServices()
     let newsfeedService = NewsfeedService()
-    let mainColor = UIColor(red: 80/255, green: 114/255.0, blue: 153/255.0, alpha: 1)
 
     var news: [NewsfeedItem]?
     

@@ -14,6 +14,8 @@ class NewsfeedRepostNode: ASDisplayNode{
     lazy var senderName = ASTextNode()
     lazy var postTextLabel = ASTextNode()
     lazy var postAttachedPhoto = ASNetworkImageNode()
+    lazy var repostArrowNode = ASImageNode()
+    lazy var date = ASTextNode()
     
     var repost: NewsfeedRepostItem?
     
@@ -45,11 +47,27 @@ class NewsfeedRepostNode: ASDisplayNode{
         
         addSubnode(senderImage)
         
-        senderName.attributedText = NSAttributedString(string: repost?.sender?.name ?? "", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 17)])
+        senderName.attributedText = NSAttributedString(string: repost?.sender?.name ?? "",
+                                                       attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 17),
+                                                                                                        NSAttributedStringKey.foregroundColor: UIColor(red: 34/255, green: 75/255, blue: 122/255, alpha: 1.0)])
         senderName.style.flexShrink = 1
         addSubnode(senderName)
         
-        postTextLabel.attributedText = NSAttributedString(string: repost?.text ?? "",  attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 15)])
+        let convertedDate = NSDate(timeIntervalSince1970: Double((repost?.date)!))
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+        
+        dateFormatter.timeStyle = DateFormatter.Style.short
+        dateFormatter.dateStyle = DateFormatter.Style.medium
+        dateFormatter.timeZone = TimeZone.current
+        let localDate = dateFormatter.string(from: convertedDate as Date)
+        date.attributedText = NSAttributedString(string: "\(localDate)",
+                                                attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12),
+                                                                                          NSAttributedStringKey.foregroundColor: UIColor(red: 145/255, green: 145/255, blue: 145/255, alpha: 1.0)])
+        addSubnode(date)
+        
+        postTextLabel.attributedText = NSAttributedString(string: repost?.text ?? "",
+                                                          attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 15)])
         if postTextLabel.attributedText == NSAttributedString(string: ""){
             postTextLabel.style.preferredSize = CGSize(width: UIScreen.main.bounds.width, height: 0.0)
             postTextLabel.isHidden = true
@@ -69,6 +87,9 @@ class NewsfeedRepostNode: ASDisplayNode{
         
         
         addSubnode(postAttachedPhoto)
+        repostArrowNode.image = #imageLiteral(resourceName: "repostArrow")
+        repostArrowNode.style.preferredSize = CGSize(width: 7 * 2, height: 7.0 * 2)
+        addSubnode(repostArrowNode)
         
         
         
@@ -76,7 +97,10 @@ class NewsfeedRepostNode: ASDisplayNode{
     }
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-        let goupImageAndName = ASStackLayoutSpec(direction: .horizontal, spacing: 20, justifyContent: .spaceAround, alignItems: .center, children: [senderImage, senderName])
+        let nameAndArrow = ASStackLayoutSpec(direction: .horizontal, spacing: 4, justifyContent: .start, alignItems: .center, children: [repostArrowNode,senderName])
+        let nameAndDate = ASStackLayoutSpec(direction: .vertical, spacing: 5, justifyContent: .start, alignItems: .start, children: [nameAndArrow, date])
+
+        let goupImageAndName = ASStackLayoutSpec(direction: .horizontal, spacing: 5, justifyContent: .start, alignItems: .center, children: [senderImage, nameAndDate])
         
         let allPost = ASStackLayoutSpec(direction: .vertical, spacing: 10, justifyContent: .start, alignItems: .start, children: [goupImageAndName, postTextLabel])
         let firstTwo = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 10, left: 20, bottom: 0, right: 20), child: allPost)

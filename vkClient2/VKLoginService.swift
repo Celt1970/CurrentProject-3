@@ -17,7 +17,7 @@ class VKLoginService{
         urlComponents.host = "oauth.vk.com"
         urlComponents.path = "/authorize"
         urlComponents.queryItems = [
-            URLQueryItem(name: "client_id", value: "0"), //Здесь нужно ввести id приложения
+            URLQueryItem(name: "client_id", value: "6292320"), //Здесь нужно ввести id приложения
             URLQueryItem(name: "display", value: "mobile"),
             URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
             URLQueryItem(name: "scope", value: "friends, wall, photos"),

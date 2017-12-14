@@ -38,6 +38,10 @@ class PreviewNodeVC: UIViewController, ASPagerDelegate, ASPagerDataSource{
         pagerNode?.scrollToPage(at: index + 1, animated: false)
 
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
+        statusBar.backgroundColor = mainColor
+    }
     
   
     func initPagerNode(){

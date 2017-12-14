@@ -30,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().isTranslucent = false
         UIApplication.shared.statusBarStyle = .lightContent
         
+        
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {_ ,_ in })
         
         return true
