@@ -17,6 +17,7 @@ class NewsfeedPost: NewsfeedItem{
     var comments: Comments
     var likes: Likes
     var reposts: Reposts
+    let views: Int
     let attachments: [NewsfeedAttachment?]
     var repost: [NewsfeedRepostItem?]
     override init(json: JSON) {
@@ -28,6 +29,7 @@ class NewsfeedPost: NewsfeedItem{
         self.reposts = Reposts(json: json["reposts"])
         self.attachments = json["attachments"].map({NewsfeedAttachment.chooseTyoeOfAttachment(json: $0.1)})
         self.repost = json["copy_history"].map({NewsfeedRepostItem(json: $0.1)})
+        self.views = json["views"]["count"].intValue
         super.init(json: json)
     }
     
