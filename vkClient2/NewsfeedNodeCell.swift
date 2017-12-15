@@ -129,6 +129,10 @@ class NewsfeedNodeCell: ASCellNode{
         addSubnode(likesImage)
         if post.likes.count != 0{
             likesLabel.attributedText = NSAttributedString(string: "\(post.likes.count)",  attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 15)])
+            likesLabel.isUserInteractionEnabled = true
+            if likesLabel.isSelected == true{
+                print("some text")
+            }
             addSubnode(likesLabel)
         }
         
@@ -184,26 +188,27 @@ class NewsfeedNodeCell: ASCellNode{
         let likesStack = ASStackLayoutSpec(direction: .horizontal, spacing: 5, justifyContent: .start, alignItems: .start, children: [likesImage, likesLabel])
         let commetsStack = ASStackLayoutSpec(direction: .horizontal, spacing: 5, justifyContent: .start, alignItems: .start, children: [commentsImage, commentsLabel])
         let repostsStack = ASStackLayoutSpec(direction: .horizontal, spacing: 5, justifyContent: .start, alignItems: .start, children: [repostsImage, repostsLabel])
-        let viewsStack = ASStackLayoutSpec(direction: .horizontal, spacing: 5, justifyContent: .end, alignItems: .end, children: [viewsImage, viewsLabel])
+        let viewsStack = ASStackLayoutSpec(direction: .horizontal, spacing: 5, justifyContent: .end, alignItems: .baselineLast, children: [viewsImage, viewsLabel])
+        let viewsStackWithInsets = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10 ), child: viewsStack)
         
         let lcrStack = ASStackLayoutSpec(direction: .horizontal, spacing: 5, justifyContent: .spaceAround, alignItems: .start, children: [likesStack, commetsStack, repostsStack])
         
-        let lcrvStack = ASStackLayoutSpec(direction: .horizontal, spacing: 10, justifyContent: .center, alignItems: .baselineFirst, flexWrap: .noWrap, alignContent: .center, lineSpacing: 10, children: [lcrStack, viewsStack])
+        let lcrvStack = ASStackLayoutSpec(direction: .horizontal, spacing: 0, justifyContent: .center, alignItems: .center, flexWrap: .noWrap, alignContent: .spaceAround, lineSpacing: 10, children: [lcrStack, viewsStack])
         
-        viewsStack.style.flexBasis = ASDimensionMakeWithFraction(0.5)
-        lcrStack.style.flexBasis = ASDimensionMakeWithFraction(0.5)
+        viewsStack.style.flexBasis = ASDimensionMakeWithFraction(0.6)
+        lcrStack.style.flexBasis = ASDimensionMakeWithFraction(0.4)
 
         
         
         
-        let lcrVerticalStack = ASStackLayoutSpec(direction: .vertical, spacing: 10, justifyContent: .spaceAround, alignItems: .center, children: [separatorWithInsets, lcrvStack])
+        let lcrVerticalStack = ASStackLayoutSpec(direction: .vertical, spacing: 10, justifyContent: .spaceAround, alignItems: .stretch, children: [separatorWithInsets, lcrvStack])
         let withPhoto = ASStackLayoutSpec(direction: .vertical, spacing: 10, justifyContent: .start, alignItems: .stretch, children: [firstTwo, postAttachedPhoto ,lcrVerticalStack])
         let withPhotoInsets =   ASInsetLayoutSpec(insets: UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0), child: withPhoto)
         
         let post = news as! NewsfeedPost
         
         if post.repost.count != 0 && !(post.repost.isEmpty){
-            let withRepost = ASStackLayoutSpec(direction: .vertical, spacing: 1, justifyContent: .start, alignItems: .stretch, children: [firstTwo, repost, postAttachedPhoto,lcrVerticalStack])
+            let withRepost = ASStackLayoutSpec(direction: .vertical, spacing: 1, justifyContent: .start, alignItems: .stretch, children: [firstTwo, repost, postAttachedPhoto,lcrvStack])
             let withPhotoAndRepostInsets =   ASInsetLayoutSpec(insets: UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0), child: withRepost)
 
             return withPhotoAndRepostInsets
