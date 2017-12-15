@@ -50,7 +50,7 @@ class NewsfeedHeaderNode: ASDisplayNode{
    
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-        let stack = ASStackLayoutSpec(direction: .horizontal, spacing: 10, justifyContent: .end, alignItems: .end, children: [icon, textNode])
+        let stack = ASStackLayoutSpec(direction: .horizontal, spacing: 10, justifyContent: .center, alignItems: .center, children: [icon, textNode])
         let inset = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 1, left: 10, bottom: 1, right: 40), child: stack)
         return inset
     }

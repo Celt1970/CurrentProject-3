@@ -49,7 +49,7 @@ class FriendsPhotosNodeVC: UIViewController, ASCollectionDelegate, ASCollectionD
         collectionNode?.dataSource = self
         let some = self.tabBarController?.tabBar.frame.height
 
-        collectionNode?.frame = CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - some!)
+        collectionNode?.frame = CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - some! - (self.navigationController?.navigationBar.intrinsicContentSize.height)!)
         
 
         view.addSubnode(collectionNode!)

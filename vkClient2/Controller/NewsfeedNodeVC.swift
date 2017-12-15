@@ -61,7 +61,7 @@ class NewsfeedNodeVC: UIViewController{
     
     func configTable(segue: @escaping segueToPost){
         tableNode = ASTableNode()
-        tableNode?.frame = UIScreen.main.bounds
+        tableNode?.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - (self.tabBarController?.tabBar.frame.height)! - (self.navigationController?.navigationBar.intrinsicContentSize.height)!)
         
         tableNode?.delegate = self
         tableNode?.dataSource = self
