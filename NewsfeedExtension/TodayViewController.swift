@@ -44,7 +44,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         tableForNewsfeed.delegate = self
         tableForNewsfeed.dataSource = self
-
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -52,9 +52,16 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
-        
-        completionHandler(NCUpdateResult.newData)
-    }
+//        DispatchQueue.main.async {
+//            let defaults = UserDefaults(suiteName: "group.newsfeedgroup")
+//            let newToken = defaults?.object(forKey: "Token") as! String
+//            self.serv.getNewsfeed(token: newToken){ [weak self] items in
+//                self?.news = items
+//                self?.tableForNewsfeed.reloadData()
+//            }
+            completionHandler(NCUpdateResult.newData)
+        }
+    
     func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {
         if activeDisplayMode == NCWidgetDisplayMode.expanded{
             self.preferredContentSize = maxSize

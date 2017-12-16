@@ -41,14 +41,12 @@ class Service{
             for group in groups{
                 let group = GroupsSender(json: group as! [String: Any])
                 groupsArray.append(group)
-                print(group.name)
             }
             
             let profiles = response["profiles"] as! [Any]
             for profile in profiles{
                 let profile = ProfilesSender(json: profile as! [String: Any])
                 profilesArray.append(profile)
-                print(profile.fullName)
             }
             
             for item in items{
