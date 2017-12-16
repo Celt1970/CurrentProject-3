@@ -61,6 +61,7 @@
 		AAC3B6141F7629220040960F /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC3B6131F7629220040960F /* Group.swift */; };
 		AAF0B6271FD35F1400626326 /* SizingPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF0B6261FD35F1400626326 /* SizingPhotos.swift */; };
 		AAFC6D9B1FC624DB00D91707 /* FriendPageNodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFC6D9A1FC624DB00D91707 /* FriendPageNodeCell.swift */; };
+		B46DF6021FE54A7A004E0CC2 /* NewsItemExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46DF6011FE54A7A004E0CC2 /* NewsItemExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,6 +149,7 @@
 		AAC3B6131F7629220040960F /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		AAF0B6261FD35F1400626326 /* SizingPhotos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizingPhotos.swift; sourceTree = "<group>"; };
 		AAFC6D9A1FC624DB00D91707 /* FriendPageNodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPageNodeCell.swift; sourceTree = "<group>"; };
+		B46DF6011FE54A7A004E0CC2 /* NewsItemExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsItemExtension.swift; sourceTree = "<group>"; };
 		B4BD59C255E0115919B4D9F5 /* Pods-vkClient2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vkClient2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-vkClient2/Pods-vkClient2.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -257,6 +259,7 @@
 			children = (
 				AA0E1B051FE132F60099B420 /* NewsfeedExtension.entitlements */,
 				AA0E1AF81FE132F00099B420 /* TodayViewController.swift */,
+				B46DF6011FE54A7A004E0CC2 /* NewsItemExtension.swift */,
 				AA0E1AFA1FE132F00099B420 /* MainInterface.storyboard */,
 				AA0E1B061FE13CAF0099B420 /* Service.swift */,
 				AA0E1AFD1FE132F00099B420 /* Info.plist */,
@@ -545,6 +548,7 @@
 			files = (
 				AA0E1AF91FE132F00099B420 /* TodayViewController.swift in Sources */,
 				AA0E1B071FE13CAF0099B420 /* Service.swift in Sources */,
+				B46DF6021FE54A7A004E0CC2 /* NewsItemExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -39,6 +39,9 @@ extension ViewController: WKNavigationDelegate {
         let token = getToken(fragment: fragment)
         print(token)
         
+        let defaults = UserDefaults(suiteName: "group.newsfeedgroup")
+        defaults?.setValue(token!, forKey: "Token")
+        
         VKServices.token = token!
         decisionHandler(.cancel)
         

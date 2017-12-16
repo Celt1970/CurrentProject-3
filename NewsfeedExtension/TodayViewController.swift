@@ -14,6 +14,8 @@ import NotificationCenter
 class TodayViewController: UIViewController, NCWidgetProviding {
     @IBOutlet weak var tableForNewsfeed: UITableView!
     
+    static var token: String = ""
+    let serv = Service()
    
     
    
@@ -21,6 +23,11 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        DispatchQueue.main.async {
+            let defaults = UserDefaults(suiteName: "group.newsfeedgroup")
+            let newToken = defaults?.object(forKey: "Token") as! String
+            self.serv.getNewsfeed(token: newToken)
+        }
         
         let version = (UIDevice.current.systemVersion as NSString).floatValue
         if version >= 10 {
