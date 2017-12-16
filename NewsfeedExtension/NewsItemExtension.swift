@@ -14,15 +14,10 @@ struct NewsItem{
     var name = ""
     
     init(json: [String: Any]) {
-        let response = json["response"] as! [String: Any]
-        let items = response["items"] as! [Any]
-        for item in items{
-            let item = item as! [String: Any]
-            let newsText = item["text"] as! String
-            sourceID = item["source_id"] as! Int
+            let newsText = json["text"] as! String
+            sourceID = json["source_id"] as! Int
             self.text = newsText
-        }
-//        print(response)
+        
     }
 }
 
@@ -31,6 +26,11 @@ struct GroupsSender{
     var id = 0
     var name = ""
     
+    init (json: [String: Any]){
+        id = json["id"] as! Int
+        name = json["name"] as! String
+    }
+    
 }
 
 struct ProfilesSender{
@@ -38,4 +38,11 @@ struct ProfilesSender{
     var firstName = ""
     var lastName = ""
     var fullName = ""
+    
+    init(json: [String:Any]) {
+        id = json["id"] as! Int
+        firstName = json["first_name"] as! String
+        lastName = json["last_name"] as! String
+        fullName = firstName + " " + lastName
+    }
 }

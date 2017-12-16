@@ -30,6 +30,7 @@
 		AA50D56A1F6C7261001678A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA50D5681F6C7261001678A7 /* Main.storyboard */; };
 		AA50D56C1F6C7261001678A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA50D56B1F6C7261001678A7 /* Assets.xcassets */; };
 		AA50D56F1F6C7261001678A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA50D56D1F6C7261001678A7 /* LaunchScreen.storyboard */; };
+		AA70DEC51FE5CB280048AEDE /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA70DEC41FE5CB280048AEDE /* NewsCell.swift */; };
 		AA80A3221FC0CB1300BB907E /* FriendsPhotosNodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA80A3211FC0CB1300BB907E /* FriendsPhotosNodeVC.swift */; };
 		AA80A3241FC0CB7C00BB907E /* FriendsPhotosNodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA80A3231FC0CB7C00BB907E /* FriendsPhotosNodeCell.swift */; };
 		AA8E58401FA2848500CA577F /* GetCashImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8E583F1FA2848500CA577F /* GetCashImage.swift */; };
@@ -118,6 +119,7 @@
 		AA50D56B1F6C7261001678A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA50D56E1F6C7261001678A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA50D5701F6C7261001678A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA70DEC41FE5CB280048AEDE /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
 		AA80A3211FC0CB1300BB907E /* FriendsPhotosNodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsPhotosNodeVC.swift; sourceTree = "<group>"; };
 		AA80A3231FC0CB7C00BB907E /* FriendsPhotosNodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsPhotosNodeCell.swift; sourceTree = "<group>"; };
 		AA8E583F1FA2848500CA577F /* GetCashImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCashImage.swift; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 			children = (
 				AA0E1B051FE132F60099B420 /* NewsfeedExtension.entitlements */,
 				AA0E1AF81FE132F00099B420 /* TodayViewController.swift */,
+				AA70DEC41FE5CB280048AEDE /* NewsCell.swift */,
 				B46DF6011FE54A7A004E0CC2 /* NewsItemExtension.swift */,
 				AA0E1AFA1FE132F00099B420 /* MainInterface.storyboard */,
 				AA0E1B061FE13CAF0099B420 /* Service.swift */,
@@ -548,6 +551,7 @@
 			files = (
 				AA0E1AF91FE132F00099B420 /* TodayViewController.swift in Sources */,
 				AA0E1B071FE13CAF0099B420 /* Service.swift in Sources */,
+				AA70DEC51FE5CB280048AEDE /* NewsCell.swift in Sources */,
 				B46DF6021FE54A7A004E0CC2 /* NewsItemExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
