@@ -19,6 +19,7 @@ class NewsfeedPost: NewsfeedItem{
     var reposts: Reposts
     let views: Int
     let attachments: [NewsfeedAttachment?]
+    let photoAttachments: [PhotoAttacnment]?
     var repost: [NewsfeedRepostItem?]
     override init(json: JSON) {
         self.postType = json["post_type"].stringValue
@@ -30,6 +31,7 @@ class NewsfeedPost: NewsfeedItem{
         self.attachments = json["attachments"].map({NewsfeedAttachment.chooseTyoeOfAttachment(json: $0.1)})
         self.repost = json["copy_history"].map({NewsfeedRepostItem(json: $0.1)})
         self.views = json["views"]["count"].intValue
+        self.photoAttachments = attachments.flatMap({$0 as? PhotoAttacnment}).filter({$0.photo.height > 0 && $0.photo.width > 0})
         super.init(json: json)
     }
     

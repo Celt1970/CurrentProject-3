@@ -14,6 +14,7 @@ class NewsfeedNodeCell: ASCellNode{
     lazy var senderName = ASTextNode()
     lazy var postTextLabel = ASTextNode()
     lazy var postAttachedPhoto = ASNetworkImageNode()
+    lazy var attachedPhotos = [ASNetworkImageNode]()
     
     lazy var likesLabel = ASTextNode()
     lazy var repostsLabel = ASTextNode()
@@ -101,21 +102,14 @@ class NewsfeedNodeCell: ASCellNode{
         addSubnode(postTextLabel)
         
         //Post Attached Photo
-        //        print(post.attachments.count)
-        //        print(post.attachments)
-        if (post.attachments.count != 0) && !(post.attachments.isEmpty)  {
-            
-            if let attach = post.attachments[0] as? PhotoAttacnment{
-            let module: Double = Double(attach.photo.height) / Double(attach.photo.width)
-            let size = CGSize(width: Double(UIScreen.main.bounds.width), height: Double(UIScreen.main.bounds.width) * module)
-            postAttachedPhoto.style.preferredSize = size
-            postAttachedPhoto.url = URL(string:attach.photo.photo_604)
-            postAttachedPhoto.contentMode = UIViewContentMode.scaleAspectFit
-        }
-        }
+       
+
+        GetPhotosBlock()
         
-        
-        addSubnode(postAttachedPhoto)
+        for item in attachedPhotos{
+//            print(item.image?.size.height)
+            addSubnode(item)
+        }
         
         if post.repost.count != 0 && !(post.repost.isEmpty){
             repost = NewsfeedRepostNode(repost: post.repost[0]!)
@@ -208,7 +202,21 @@ class NewsfeedNodeCell: ASCellNode{
         
         
         let lcrVerticalStack = ASStackLayoutSpec(direction: .vertical, spacing: 10, justifyContent: .spaceAround, alignItems: .stretch, children: [separatorWithInsets, lcrvStack])
-        let withPhoto = ASStackLayoutSpec(direction: .vertical, spacing: 10, justifyContent: .start, alignItems: .stretch, children: [firstTwo, postAttachedPhoto ,lcrVerticalStack])
+        let withPhoto = ASStackLayoutSpec(direction: .vertical, spacing: 10, justifyContent: .start, alignItems: .stretch, children: [firstTwo,lcrVerticalStack])
+
+        if attachedPhotos.count == 1{
+            withPhoto.children?.insert(attachedPhotos[0], at: 1)
+
+        }
+        if attachedPhotos.count == 2{
+            let twoPhotos = ASStackLayoutSpec(direction: .horizontal, spacing: 1, justifyContent: .center
+                , alignItems: .center, children: [attachedPhotos[0], attachedPhotos[1]])
+            withPhoto.children?.insert(twoPhotos, at: 1)
+        }
+        if attachedPhotos.count == 3{
+            let threePhotos = ASStackLayoutSpec(direction: .horizontal, spacing: 1, justifyContent: .center, alignItems: .center, children: [attachedPhotos[0], attachedPhotos[1], attachedPhotos[2]])
+            withPhoto.children?.insert(threePhotos, at: 1)
+        }
         let withPhotoInsets =   ASInsetLayoutSpec(insets: UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0), child: withPhoto)
         
         

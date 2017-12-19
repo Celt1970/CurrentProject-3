@@ -43,6 +43,7 @@
 		AA8E69201F7531B1000E278F /* MyGroupsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8E691F1F7531B1000E278F /* MyGroupsCell.swift */; };
 		AA8E69231F753321000E278F /* NewGroupsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8E69221F753321000E278F /* NewGroupsVC.swift */; };
 		AA8E69251F753335000E278F /* NewGroupsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8E69241F753335000E278F /* NewGroupsCell.swift */; };
+		AA90E0E31FE95199007881A4 /* GetPhotosBlockInNewsfeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA90E0E21FE95199007881A4 /* GetPhotosBlockInNewsfeed.swift */; };
 		AAA091211FC453890096B019 /* NewPostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA091201FC453890096B019 /* NewPostVC.swift */; };
 		AAA091231FC45A340096B019 /* NewsfeedHeaderNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA091221FC45A340096B019 /* NewsfeedHeaderNode.swift */; };
 		AAA8F0A51F9967E7006200B7 /* NewsfeedProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA8F0A41F9967E7006200B7 /* NewsfeedProfile.swift */; };
@@ -132,6 +133,7 @@
 		AA8E691F1F7531B1000E278F /* MyGroupsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyGroupsCell.swift; sourceTree = "<group>"; };
 		AA8E69221F753321000E278F /* NewGroupsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGroupsVC.swift; sourceTree = "<group>"; };
 		AA8E69241F753335000E278F /* NewGroupsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGroupsCell.swift; sourceTree = "<group>"; };
+		AA90E0E21FE95199007881A4 /* GetPhotosBlockInNewsfeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPhotosBlockInNewsfeed.swift; sourceTree = "<group>"; };
 		AAA091201FC453890096B019 /* NewPostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostVC.swift; sourceTree = "<group>"; };
 		AAA091221FC45A340096B019 /* NewsfeedHeaderNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedHeaderNode.swift; sourceTree = "<group>"; };
 		AAA8F0A41F9967E7006200B7 /* NewsfeedProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedProfile.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 				AAFC6D9A1FC624DB00D91707 /* FriendPageNodeCell.swift */,
 				AAA8F0AD1F99FC0C006200B7 /* NewsfeedPostCell.swift */,
 				AAB0C7771FA746F900F494A0 /* NewsfeedNodeCell.swift */,
+				AA90E0E21FE95199007881A4 /* GetPhotosBlockInNewsfeed.swift */,
 				AA00FD231FDC80F40009E092 /* NewsfeedRepostNode.swift */,
 				AAB0C77B1FA7B7C400F494A0 /* NewsfeedWallPhotoNodeCell.swift */,
 				AABB19CA1FA7DEAD0022E036 /* FriendsNodeCell.swift */,
@@ -561,6 +564,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAA8F0B01F99FCBF006200B7 /* NewsfeedVC.swift in Sources */,
+				AA90E0E31FE95199007881A4 /* GetPhotosBlockInNewsfeed.swift in Sources */,
 				AAA8F0A71F996B53006200B7 /* NewsfeedGroup.swift in Sources */,
 				AA8E691C1F752B5E000E278F /* PhotosCell.swift in Sources */,
 				AA50D5671F6C7261001678A7 /* ViewController.swift in Sources */,
