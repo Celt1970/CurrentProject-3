@@ -46,7 +46,6 @@ class NewsfeedNodeCell: ASCellNode{
     }
     override func didLoad() {
         super.didLoad()
-        
 
     }
     func initUI(){
@@ -111,6 +110,7 @@ class NewsfeedNodeCell: ASCellNode{
             postTextLabel.style.preferredSize = CGSize(width: UIScreen.main.bounds.width, height: 0.0)
             postTextLabel.isHidden = true
         }
+        postTextLabel.maximumNumberOfLines = 10
         addSubnode(postTextLabel)
 
         

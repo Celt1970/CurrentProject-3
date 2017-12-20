@@ -653,6 +653,7 @@
 		AA0E1B021FE132F00099B420 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = NewsfeedExtension/NewsfeedExtension.entitlements;
@@ -674,6 +675,7 @@
 		AA0E1B031FE132F00099B420 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = NewsfeedExtension/NewsfeedExtension.entitlements;
@@ -803,7 +805,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B4BD59C255E0115919B4D9F5 /* Pods-vkClient2.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = vkClient2/vkClient2.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -822,7 +824,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 869C0F8ACA399BF8C8C8AFF0 /* Pods-vkClient2.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = vkClient2/vkClient2.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
