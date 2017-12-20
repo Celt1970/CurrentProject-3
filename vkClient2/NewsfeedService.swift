@@ -45,8 +45,7 @@ class NewsfeedService{
                     }
                     
                 }
-                if let post = item as? NewsfeedPost{
-                }
+                
                 return item
                 
             })
@@ -57,6 +56,55 @@ class NewsfeedService{
             
             
         }
+    }
+    
+    func getWall(id: Int, completion: @escaping loadNewsfeedCompletion){
+        let parameters: Parameters = [
+            "access_token" : "\(VKServices.token)",
+            "v" : "5.68",
+            "owner_id" : "100065585",
+            "count" : "100",
+            "extended" : "1"
+        ]
+        
+        let queue = DispatchQueue.global(qos: .userInteractive)
+        
+        Alamofire.request("https://api.vk.com/method/wall.get", method: .get, parameters: parameters).responseJSON(queue: queue){ response in
+            guard let data = response.value else {return}
+            let json = JSON(data)
+            let items = json["response"]["items"].flatMap({NewsfeedItem.chooseNewsType(json: $0.1)})
+
+            let senders = json["response"]["profiles"].flatMap({NewsfeedProfile(json: $0.1)}) + json["response"]["groups"].flatMap({NewsfeedGroup(json: $0.1)})
+            let news = items.flatMap({ (item: NewsfeedItem) -> NewsfeedItem in
+                
+                for sender in senders{
+                    if sender.id.magnitude == item.sourceID.magnitude{
+                        item.sender = sender
+                    }
+                    if let post = item as? NewsfeedPost{
+                        if (post.repost.count != 0) && !(post.repost.isEmpty){
+                            if post.repost[0]?.ownerId.magnitude == sender.id.magnitude{
+                                post.repost[0]?.sender = sender
+                            }
+                        }
+                    }
+                    
+                }
+                
+                return item
+                
+            })
+            
+            DispatchQueue.main.async {
+                completion(news)
+            }
+            
+            
+        }
+        
+        
+        
+        
     }
     
     func newPpost(post: NewPost){
@@ -79,6 +127,7 @@ class NewsfeedService{
         
     }
 }
+
 
 struct NewPost{
     var message: String?

@@ -30,6 +30,7 @@ class NewsfeedNodeCell: ASCellNode{
     lazy var repost = ASDisplayNode()
     lazy var date = ASTextNode()
     
+    lazy var attachedPhotosStack = ASStackLayoutSpec()
     var news: NewsfeedItem?
     
     init (news: NewsfeedItem?){
@@ -179,8 +180,6 @@ class NewsfeedNodeCell: ASCellNode{
         let firstTwo = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 11, left: 20, bottom: 0, right: 20), child: allPost)
         topSeparator.style.flexGrow = 1
         let separatorWithInsets = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15), child: topSeparator)
-//        let lcrStack = ASStackLayoutSpec(direction: .horizontal, spacing: 20, justifyContent: .end, alignItems: .end, children: [likesLabel, commentsLabel, repostsLabel])
-//        let lcrStackWithInsets = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20), child: lcrStack)
         let likesStack = ASStackLayoutSpec(direction: .horizontal, spacing: 5, justifyContent: .start, alignItems: .start, children: [likesImage, likesLabel])
         let commetsStack = ASStackLayoutSpec(direction: .horizontal, spacing: 5, justifyContent: .start, alignItems: .start, children: [commentsImage, commentsLabel])
         let repostsStack = ASStackLayoutSpec(direction: .horizontal, spacing: 5, justifyContent: .start, alignItems: .start, children: [repostsImage, repostsLabel])
@@ -197,26 +196,11 @@ class NewsfeedNodeCell: ASCellNode{
 
         let lcrvStack = ASStackLayoutSpec(direction: .horizontal, spacing: 0, justifyContent: .center, alignItems: .center, flexWrap: .noWrap, alignContent: .spaceAround, lineSpacing: 10, children: [lcrStack, viewsStack])
         
-        
-        
-        
-        
         let lcrVerticalStack = ASStackLayoutSpec(direction: .vertical, spacing: 10, justifyContent: .spaceAround, alignItems: .stretch, children: [separatorWithInsets, lcrvStack])
         let withPhoto = ASStackLayoutSpec(direction: .vertical, spacing: 10, justifyContent: .start, alignItems: .stretch, children: [firstTwo,lcrVerticalStack])
 
-        if attachedPhotos.count == 1{
-            withPhoto.children?.insert(attachedPhotos[0], at: 1)
+        withPhoto.children?.insert(attachedPhotosStack, at: 1)
 
-        }
-        if attachedPhotos.count == 2{
-            let twoPhotos = ASStackLayoutSpec(direction: .horizontal, spacing: 1, justifyContent: .center
-                , alignItems: .center, children: [attachedPhotos[0], attachedPhotos[1]])
-            withPhoto.children?.insert(twoPhotos, at: 1)
-        }
-        if attachedPhotos.count == 3{
-            let threePhotos = ASStackLayoutSpec(direction: .horizontal, spacing: 1, justifyContent: .center, alignItems: .center, children: [attachedPhotos[0], attachedPhotos[1], attachedPhotos[2]])
-            withPhoto.children?.insert(threePhotos, at: 1)
-        }
         let withPhotoInsets =   ASInsetLayoutSpec(insets: UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0), child: withPhoto)
         
         

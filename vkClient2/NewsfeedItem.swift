@@ -33,6 +33,9 @@ class NewsfeedItem{
         case "wall_photo":
             return NewsfeedWallPhoto(json: json)
         default:
+            if json["post_type"].stringValue == "post"{
+                return NewsfeedPost(json: json)
+            }
             return nil
         }
     }
