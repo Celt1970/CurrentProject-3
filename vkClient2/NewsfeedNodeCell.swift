@@ -29,9 +29,15 @@ class NewsfeedNodeCell: ASCellNode{
     lazy var topSeparator = ASImageNode()
     lazy var repost = ASDisplayNode()
     lazy var date = ASTextNode()
+    lazy var seeMoreBtn = ASButtonNode()
+    
+
     
     lazy var attachedPhotosStack = ASStackLayoutSpec()
     var news: NewsfeedItem?
+    
+    weak var delegate: CellUpdater?
+    
     
     init (news: NewsfeedItem?){
         super.init()
@@ -40,6 +46,8 @@ class NewsfeedNodeCell: ASCellNode{
     }
     override func didLoad() {
         super.didLoad()
+        
+
     }
     func initUI(){
         selectionStyle = .none
@@ -75,7 +83,7 @@ class NewsfeedNodeCell: ASCellNode{
 
         senderName.truncationMode = .byTruncatingTail
         senderName.style.preferredSize = CGSize(width: UIScreen.main.bounds.width / 3 * 2, height: 20)
-        senderName.truncationAttributedText = NSAttributedString(string: "¶¶¶")
+        senderName.truncationAttributedText = NSAttributedString(string: "...")
         addSubnode(senderName)
         
         let convertedDate = NSDate(timeIntervalSince1970: Double((news?.date)!))
@@ -91,16 +99,25 @@ class NewsfeedNodeCell: ASCellNode{
         addSubnode(date)
         
         
+        
         let post = news as! NewsfeedPost
         
         //Post Text
         
         postTextLabel.attributedText = NSAttributedString(string: post.text,  attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 15)])
+        
+        
         if postTextLabel.attributedText == NSAttributedString(string: ""){
             postTextLabel.style.preferredSize = CGSize(width: UIScreen.main.bounds.width, height: 0.0)
             postTextLabel.isHidden = true
         }
         addSubnode(postTextLabel)
+
+        
+        seeMoreBtn.setTitle("Показать полностью...", with: nil, with: mainColor, for: .normal)
+        seeMoreBtn.addTarget(self, action: #selector(someFunc), forControlEvents: .touchUpInside)
+        addSubnode(seeMoreBtn)
+        
         
         //Post Attached Photo
        
@@ -170,6 +187,13 @@ class NewsfeedNodeCell: ASCellNode{
     }
     
     
+    @objc func someFunc(){
+        postTextLabel.maximumNumberOfLines = 0
+        seeMoreBtn.isHidden = true
+
+        postTextLabel.setNeedsLayout()
+    }
+    
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         let post = news as! NewsfeedPost
 
@@ -177,6 +201,11 @@ class NewsfeedNodeCell: ASCellNode{
         let goupImageAndName = ASStackLayoutSpec(direction: .horizontal, spacing: 10, justifyContent: .spaceAround, alignItems: .center, children: [senderImage, nameAndDate])
         
         let allPost = ASStackLayoutSpec(direction: .vertical, spacing: 10, justifyContent: .start, alignItems: .start, children: [goupImageAndName, postTextLabel])
+//        print("it does work \(postTextLabel.lineCount)")
+
+        if postTextLabel.lineCount > 8{
+            allPost.children?.append(seeMoreBtn)
+        }
         let firstTwo = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 11, left: 20, bottom: 0, right: 20), child: allPost)
         topSeparator.style.flexGrow = 1
         let separatorWithInsets = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15), child: topSeparator)

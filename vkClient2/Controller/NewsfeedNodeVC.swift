@@ -12,7 +12,7 @@ import AsyncDisplayKit
 let mainColor = UIColor(red: 80/255, green: 114/255.0, blue: 153/255.0, alpha: 1)
 
 
-class NewsfeedNodeVC: UIViewController{
+class NewsfeedNodeVC: UIViewController, CellUpdater {
     var tableNode: ASTableNode?
 
     
@@ -82,6 +82,10 @@ class NewsfeedNodeVC: UIViewController{
         reload()
     }
     
+    func updateCellByIndexPath(index: IndexPath){
+        tableNode?.reloadRows(at: [index], with: .none)
+    }
+
 }
 
 extension NewsfeedNodeVC: ASTableDelegate, ASTableDataSource{
@@ -108,9 +112,17 @@ extension NewsfeedNodeVC: ASTableDelegate, ASTableDataSource{
     func tableNode(_ tableNode: ASTableNode, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
         let oneNews = news![indexPath.section]
         return{
-            return NewsfeedNodeCell(news: oneNews)
+            let newsfeed = NewsfeedNodeCell(news: oneNews)
+            newsfeed.delegate = self
+            return newsfeed
         }
     }
     
     
+    
+    
+}
+
+protocol CellUpdater: class {
+    func updateCellByIndexPath(index: IndexPath)
 }
